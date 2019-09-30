@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each book in book_list
+    li 
+      a(href=book.url) #{book.title} 
+      |  (#{book.author.name}) (id#{book.author._id}) 
+      span #[strong Genre:]&nbsp;
+        each val, index in book.genre
+          a(href=val.url) #{val.name}
+          if index < book.genre.length - 1
+            |, 
+
+  else
+    li There are no books.
